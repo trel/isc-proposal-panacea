@@ -7,7 +7,7 @@ This is where the proposal should be outlined.
 
 The integrated lab (see Fig \@ref(fig:intlab)) is a solution to centralise data management of the traditional unconnected lab by collecting and harmonizing data streams from various lab instruments (software package 1), and by providing open-sourced alternatives for routine analytical workflows (software package 3). These routine analytics are now often locked away in a plethora of vendor supplied software suits. Because of our background in Earth sciences, this project ("the integrated lab") will, as an initial step, focus on observational data from (geo)chemical laboratory facilities. However, it is expected that the tool can eventually broadly employed in various laboratory settings and to accomodate for the demands of various scientific disciplines. 
 
-```{r intlab, out.width="70%", fig.cap="Integrated lab solution versus traditional unconnected lab set-ups."}
+```{r intlab, out.width="70%", fig.cap="Integrated lab solution versus traditional unconnected lab set-ups.", echo=FALSE}
 knitr::include_graphics("proposal/datamanagement_infra.png")
 ```
 
