@@ -1,4 +1,9 @@
 # The Problem
+
+Data management and subsequent downstream recycling of data is increasingly seen as a primer for future innovation and new discoveries. Above all, good data management practices are critical to open science and an inclusive, connected worldwide academic community---providing opportunities for developing countries that do not have the same resources for data generation as wealthy countries. 
+
+Solutions for better data management infrastructures, such as formalised in the Findable, Accessible, Interoperable, and Reusable (FAIR) data guiding principles [@Wilkinson2016], are an active, yet developing field of research. The task of optimizing data management infrastructures can be especially daunting for laboratories populated by a range of analytical instruments---each with their own vendor supplied software suite for data processing, analysing, and diagnostics. The wealth of commercial analytical instruments results in various data models which are not easily integrated. This so-called "vendor lock-in" further prevents transparency of the workflow from raw to analysed data. Although low-level access to raw data and insights in workflows is not necessary for all scientist, it can be important for special purpose research questions and the reproducibility of published research. 
+
 <!-- 
 Outlining the issue / weak point / problem to be solved by this proposal. This should be a compelling section that sets the reader up for the next section - the proposed solution!
 
