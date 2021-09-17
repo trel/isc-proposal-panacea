@@ -11,7 +11,7 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE, echo= FALSE)
 ```
 
 ```{r pkgs}
-pkgs <- c("readr", "vroom", "xrftools", "point") #  
+pkgs <- c("readr", "vroom", "xrftools", "point", "cpp11") #  
 knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "")
 ```
 
