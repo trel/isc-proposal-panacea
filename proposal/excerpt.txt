@@ -1,0 +1,15 @@
+                      Sample ID: MON-233
+                      
+Peak Height Distribution: 210 V, EMHV: 2350 mV
+
+  Time (s)  Count
+  1         56 
+  2         60
+  3         64
+  4         64
+  5         57
+  6         59
+  7         58
+  8         58
+  9         62
+  10        54

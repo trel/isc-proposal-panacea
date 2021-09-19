@@ -10,9 +10,10 @@ bibliography: ["proposal/FAIReLABS-ics-proposal.bib", "proposal/packages.bib"]
 knitr::opts_knit$set(warning = FALSE, message= FALSE, echo= FALSE)
 ```
 
-```{r pkgs}
-pkgs <- c("readr", "vroom", "xrftools", "point", "cpp11") #  
-knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "")
+```{r pkgs, eval=FALSE}
+# run for bibtex of pkgs
+pkgs <- c("readr", "vroom", "xrftools", "point", "cpp11", "devtools", "pkgdown") 
+knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "") 
 ```
 
 ```{r autodoc, child='proposal/signatories.Rmd', eval=TRUE}

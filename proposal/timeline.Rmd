@@ -1,6 +1,12 @@
 # Project plan
 
 ## Start-up phase
+
+The development of *panacea* is a central part of a newly initiated consortium; FAIReLABS^[FAIR refers to the guiding principles for data: Findable, Accessible, Interoperable, and Reusable [@Wilkinson2016]], dedicated to researching and developing solutions to make laboratory data, throughout the whole cycle from generation to analysing, more transparent, accessible, and customisable. Thus FAIReLABS, and the here proposed package, is meant to be conductive to innovation within a analytical laboratory environment, and foster inclusiveness through open sciences. Besides research and development, it is intended that members of FAIReLABS also provide courses/workshops in data management practices and reproducible science as well as consultation in how to turn a traditional unconnected lab in an integrated lab (see Fig. \@ref(fig:intlab)). The initial steps is already undertaken by starting a new GitHub Organisation for FAIReLABS, which also host this proposal as a public repository.
+
+The first stage of package development encompasses soliciting specific use-cases from the R community and laboratory facilities. A close collaboration with the Geoscience Department, Utrecht University (UU), the Netherlands, and their analytical laboratory infrastructure is already foreseen. Nonetheless, the development will benefit from having a good overview of the types of data and data models produced by analytical equipment in a range of laboratories. We will opt for an [MIT license](https://opensource.org/licenses/MIT) and a code of conduct, which will follows the [Contributor Covenant](https://www.contributor-covenant.org/) guide lines. Combined this ensures that contributions to the package can be done in a safe, inclusive, welcoming, and harassment-free environment conductive for collaborative package development, and ensuring down-stream re-usage of the developed software. The licensing could possibly constrain the integration of some C++ libraries. Reporting of the progress of the project to both (lab-)users and developers will help ensure that we stay on track and thus develop a solution that has a broad future implementation.  
+
+
 <!--
 Covering the planning phase, this section should provide a relatively detailed plan of how work will start on the project. This section is important because projects need to get up and running quickly.
 
@@ -12,6 +18,52 @@ Covering the planning phase, this section should provide a relatively detailed p
 
 
 ## Technical delivery
+
+The duration of the project will be 12 months. The "**deliverable**" give a convenient measure for project's progress.
+
+***Months 1--2***
+
+- Use cases documented combined with on-premise visits to lab facilities UU.
+- Determine the feasibility of the solutions for the engine of the core function as discussed in section (\@ref(sec:Detail)) and make a selection.
+<!-- - NLP solution is specifically discussed with experts from [Taxnoic](https://www.taxonic.com/en/) -->
+- **Deliverable:** We report our finding on the current state of data management in analytical laboratory settings as a blog post.
+
+***Months 3--4***
+
+- Start with basic package set-up with devtools [@devtools], create source scripts in C++ for loading data files and start initial layout for cascading regular expressions for tokenization.
+- Follow best practices from the start of package development; e.g., documenting progress, maintaining a functioning Git master branch and usage of development branches for experimental updates. This will be published on Github from the start, and tags are created when milestones are hit to benefit progress tracking. In addition, unit tests are constantly developed to ensure that a particular behaviour of a function is, and remains, correct (and also regularly checking code coverage of said tests). And, lastly testing code and documentation with `R CMD check` and with continuous integration provided by [Travis CI](https://travis-ci.org/).
+- **Deliverable:** A GitHub repo with the basis of the package.
+
+***Months 5--6***
+
+- Finish preprocessing protocol, and test on different use-cases.
+- **Deliverable:** A tag in the GitHub repo annotating the milestone of working preprocessing protocol.
+
+***Months 7--8***
+
+- Finish development on the engine for data collecting and harmonization in C++, and test on different use-cases.
+- **Deliverable:** A tag in the GitHub repo annotating the milestone of successful collecting and harmonization raw data.
+
+***Months 9--10***
+
+- Integrate C++ with R and implement altrep framework for lazy access.
+- Installable package on GitHub with documentation as vignettes and website with pkgdown [@pkgdown].
+- Test use cases for the integrated lab and using C++ code basis for centralised data management (iRODS) in a laboratory setting (UU).
+- **Deliverable:** Installable and documented package on GitHub.
+
+
+***Months 11--12***
+
+- Publish on CRAN.
+- Include usage of package in teaching/course material provided by FAIReLABS.
+- Present package at conference(s) that could specifically target users (natural science conferences) and/or developers (R or open science conferences).
+- **Deliverable:** Installable package on CRAN and presentation.
+
+***Future work***
+
+- Write paper concerning package for the [Journal of Open Source Software](https://joss.theoj.org/).
+- Continue advertisement of package by active engaging with target user-base at conferences, social media and blog contributions as well as integration with the services offered by FAIReLABS. 
+
 <!--
 Covering the actual delivery of the project this section should provide at least a high-level the implementation. 
 
