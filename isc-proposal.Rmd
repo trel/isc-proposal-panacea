@@ -1,5 +1,6 @@
 ---
 title: "`r proposal`"
+subtitle: ISC proposal
 author: "`r author`"
 date: "`r Sys.Date()`"
 output: html_document
@@ -12,7 +13,7 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE, echo= FALSE)
 
 ```{r pkgs, eval=FALSE, echo= FALSE}
 # run for bibtex of pkgs
-pkgs <- c("readr", "vroom", "xrftools", "point", "cpp11", "devtools", "pkgdown") 
+pkgs <- c("readr", "vroom", "xrftools", "isoreader", "point", "cpp11", "devtools", "pkgdown") 
 knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "") 
 ```
 
