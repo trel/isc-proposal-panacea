@@ -22,5 +22,3 @@ It is important to cover:
  - [ ] Have there been previous attempts to resolve the problem
  - [ ] Why it should be tackled
 -->
-
-
