@@ -8,7 +8,7 @@ GH_REPO="@github.com/$TRAVIS_REPO_SLUG.git"
 FULL_REPO="https://$GH_TOKEN$GH_REPO"
 
 git config --global user.name "martinschobben"
-git config --global user.email "schobbenmartin@gmail.com"
+git config --global user.email "martin.schobben@hotmail.com"
 
 R CMD BATCH 'ghgenerate.R'
 cp ghgenerate.Rout out
