@@ -64,7 +64,7 @@ xcp <- tibble::tibble(
     c("table 1", "column 2")
   ),
   values = list(
-    lubridate::ymd_hm("2021-09-20  20:15"),
+    as.character(lubridate::ymd_hm("2021-09-20  20:15")),
     "MON-233",
     210,
     2350,
