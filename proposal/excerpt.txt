@@ -1,6 +1,7 @@
-                      Sample ID: MON-233
+2021-09-20  20:15                               Sample ID: MON-233
                       
 Peak Height Distribution: 210 V, EMHV: 2350 mV
+Position: x=12um; y=2um; z=100um
 
   Time (s)  Count
   1         56 

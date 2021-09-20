@@ -33,3 +33,5 @@ knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "")
 
 ```{r autodoc, child='proposal/success.Rmd', eval=TRUE}
 ```
+
+# References

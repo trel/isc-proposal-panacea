@@ -1,9 +1,20 @@
 # Requirements
+
+The realisation of this package requires a collaborative environment that includes the potential user, and their specific analytical data types, as well as developers and data scientist with expertise in several disciplines. In regards to development, we will consult experts of data management (i.e., iRODS) and Natural Language Processing, and the integration of C++ and R.
+
 <!-- 
 An idea of what is required to make the project actually happen
 -->
 
 ## People
+
+The project team will lead both the gathering of specific use-cases and will form a picture of the current state of data management practices in analytical laboratories among different disciplines. In addition, they take control in all steps of development, documentation and outreach of the package. Dedicated contributors have been contacted and their expertise is regarded as essential aid for successful deployment of the plan.
+
+The project lead (MS) is an Earth scientist with 10 years of experience in academic research and has worked in several analytical laboratory facilities (MfN Berlin, University of Leeds, and Utrecht University). He also has a solid basis in data-analysis and programming with R, and has started developing packages for the processing of isotope geochemical data (see https://martinschobben.github.io/point/).
+
+JR is ...
+
+
 <!--
 Who needs to be involved, what's the proposed structure, what will it take to get their involvement?
 -->
@@ -14,6 +25,8 @@ What processes need to be put in place e.g. codes of conduct, regular ISC meetin
 -->
 
 ## Tools & Tech
+
+For successful delivery of the package we need access to large quantities of raw data from various analytical instruments. We have access to data from Utrecht University and potentially the MfN Berlin. GitHub is essential for the collaborative character of the work. No additional computing facilities are envisioned at the moment. 
 <!--
 What is going to be needed to deliver this project? 
 
@@ -23,12 +36,18 @@ Are there tools or tech that don't exist that will be produced to facilitate the
 -->
 
 ## Funding
+
+We request \$xx.xxx for the salary of MS (project lead) for 0.5 ft working hours a week. This sum is based on the salary for a PostDoc in natural sciences, including the years of experience. The remainder of working hours, he will spend on developing and giving courses/workshops for FAIReLABS that entail best practices in data management, reproducible science and data science with R (see e.g., [PAGES workshop youtube](https://www.youtube.com/watch?v=r99jsChi4HU)). The latter is not include in the salary request. We also request funding for the attendance of one conference of \$.x.xxx.
+
+
 <!-- 
 [TO DO] THE GUIDANCE IS PRETTY UNCLEAR, ESP IN LIGHT OF GABOR'S PROPOSAL VS AWARD SIZE
 
 -->
 
 ## Summary
+
+Salary to support the project lead (MS) is requested. He will dedicate 0.5 ft (18 hours a week -  common under European labour laws) of his time to the development, documentation as well as outreach of the package.
 <!--
 A summary of the requirements that contextualises the costs
 -->
