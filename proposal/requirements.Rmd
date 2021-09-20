@@ -12,7 +12,7 @@ The project team will lead the gathering of specific use-cases and form a pictur
 
 The project lead (MS) is an Earth scientist with 10 years of experience in academic research, and he has worked in several analytical laboratory facilities (MfN Berlin, University of Leeds, and Utrecht University). He also has a solid basis in data-analysis and programming with R, and has started developing packages for the processing of isotope geochemical data (see https://martinschobben.github.io/point/). Teaching and helping others to encode R solutions has been another of his passions, such as the development of [workshops](https://www.youtube.com/watch?v=r99jsChi4HU), and by founding of an R help desk at the UU ([uu-code-club](https://github.com/uu-code-club)).
 
-JR is ...
+JR, also a geoscientist, has expertise in data management (being the main maintainer and developer of Neptune; one of the largest paleontology database), data analysis (primarily in R and python), machine learning (see e. g. [a CNN-based radiolarian classifier](https://github.com/plannapus/RadiolarianClassifier)) and scientific software development (see e. g. [NSB_ADP_wx](http://github.com/plannapus/NSB_ADP_wx) or [Raritas](http://github.com/plannapus/Raritas); two pieces of software designed in particular for increasing data reproducibility and reusability in paleontology and stratigraphy). JR was also the organizer of a programming club at the MfN ([Mfn Code Clinic](http://github.com/plannapus/MfN-Code-Clinic)) from 2015 to 2018.
 
 
 <!--
