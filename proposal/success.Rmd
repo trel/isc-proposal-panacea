@@ -22,7 +22,7 @@ How will we know when success is achieved, what markers can we use along the way
 How could this be extended / developed in the future by yourself and/or the community in general?
 -->
 
-Future work revolves around integration of the package with the services offered by FAIReLABS. It will enable consulting and implementing better resources for data management in analytical laboratories as well as help teaching efforts focussing on data management and reproducible science. In addition, we will potentially consider writing a paper concerning package for the [Journal of Open Source Software](https://joss.theoj.org/). And, continuously advertise usage of the package by active engaging with target user-base at conferences and social media. 
+Future work revolves around integration of the package with the services offered by FAIReLABS. It will enable consulting and implementing better resources for data management in analytical laboratories as well as help teaching efforts focussing on data management and reproducible science. In addition, we will potentially consider writing a paper concerning the package for the [Journal of Open Source Software](https://joss.theoj.org/). And, continuously advertise usage of the package by active engaging with target user-base at conferences and on social media. 
 
 
 ## Key risks
