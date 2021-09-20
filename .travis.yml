@@ -1,7 +1,7 @@
 language: r
 cache: packages
 install:
-  - Rscript -e 'install.packages(c("rmarkdown", "bookdown", "tibble"))'
+  - Rscript -e 'install.packages(c("rmarkdown", "bookdown", "tibble", "lubridate"))'
   - chmod 755 .push_gh_pages.sh
   - chmod 755 ghgenerate.R
 script:
