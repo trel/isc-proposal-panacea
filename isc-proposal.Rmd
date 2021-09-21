@@ -13,7 +13,8 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE, echo= FALSE)
 
 ```{r pkgs, eval=FALSE, echo= FALSE}
 # run for bibtex of pkgs
-pkgs <- c("readr", "vroom", "xrftools", "isoreader", "point", "cpp11", "devtools", "pkgdown") 
+pkgs <- c("readr", "vroom", "xrftools", "isoreader", "point", "cpp11", 
+          "devtools", "pkgdown", "tibble") 
 knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "") 
 ```
 
