@@ -5,7 +5,7 @@ This is where the proposal should be outlined.
 
 ## Overview
 
-The integrated lab  is a solution to centralise data management of the traditional unconnected lab (see "Integrated Lab" Fig \@ref(fig:intlab)). A first step in the realisation of an integrated lab would encompass a solution for collecting and harmonizing data streams from various lab instruments. The development of the R package *panacea* will attempt to provide a more universal solution for parsing unstructured (meta)data formats in a rectangular format---notably, separating variables, units, and values. This solution would therefore make analytical data more easily accessible for both humans and machines. In extension we intend that this solution centralises data management of labs by facilitating automatic data ingest (i.e., data import) as a subsystem of, e.g., the iRODS (Integrated Rule-Oriented Data System) [@Rajasekar2010; @Rajasekar2015]. 
+The integrated lab  is a solution to centralise data management of the traditional unconnected lab (see "Integrated Lab" Fig \@ref(fig:intlab)). A first step in the realisation of an integrated lab would encompass a solution for collecting and harmonising data streams from various lab instruments. The development of the R package *panacea* will attempt to provide a more universal solution for parsing unstructured (meta)data formats in a rectangular format---notably, separating variables, units, and values. This solution would therefore make analytical data more easily accessible for both humans and machines. In extension we intend that this solution centralises data management of labs by facilitating automatic data ingest (i.e., data import) as a subsystem of, e.g., the iRODS (Integrated Rule-Oriented Data System) [@Rajasekar2010; @Rajasekar2015]. 
 
 Besides addressing the vendor lock-in of analytical data and optimized data management solutions, this tool has several other benefits:
 
@@ -53,15 +53,15 @@ xcp <- tibble::tibble(
   unit = c(NA_character_, NA_character_, "V", "mV", rep("um", 3), "s", 
            NA_character_),
   relation = list(
-    c("line 1", "section 1"),
-    c("line 1", "section 2"),
-    c("line 3", "section 1"),
-    c("line 3", "section 2"),
-    c("line 4", "section 1"),
-    c("line 4", "section 2"),
-    c("line 4", "section 3"),
-    c("table 1", "column 1"),
-    c("table 1", "column 2")
+    c("file 1", "line 1", "section 1"),
+    c("file 1", "line 1", "section 2"),
+    c("file 1", "line 3", "section 1"),
+    c("file 1", "line 3", "section 2"),
+    c("file 1", "line 4", "section 1"),
+    c("file 1", "line 4", "section 2"),
+    c("file 1", "line 4", "section 3"),
+    c("file 1", "table 1", "column 1"),
+    c("file 1", "table 1", "column 2")
   ),
   values = list(
     as.character(lubridate::ymd_hm("2021-09-20  20:15")),
@@ -80,7 +80,6 @@ knitr::kable(xcp, caption = "Provisional pancaea return value, based on the anal
 
 
 Based on a twofold reasoning, we propose encoding this solution in the C++ language. Firstly, we want to ensure compatibility with external data management software, notably iRODS. In this use-case, the compiled C++ source code could be adapted to create a standardized protocol for ingestion into a central data management system. The second consideration is performance related, e.g., the demanding operation of tokenizing a large corpus. This approach of extending the R core interpreter with C++ ensures a lean and fast approach. In addition, the usage of the R package cpp11 [@cpp11] enables the Altrep framework for lazy load of data in R, ensuring further speed and convenience of the functionality.  
-
 
 
 <!--
