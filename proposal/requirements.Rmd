@@ -40,7 +40,7 @@ Are there tools or tech that don't exist that will be produced to facilitate the
 
 ## Funding
 
-We request \$xx.xxx for the salary of MS (project lead) for 0.5 ft working hours a week. This sum is based on the salary for a PostDoc in natural sciences, including the applicants years of experience. The remainder of working hours he will spend on developing and giving courses/workshops (see FAIReLABS; Section \@ref(sec:Start)) that entail best practices in data management, reproducible science and data science with R (see e.g., [PAGES workshop youtube](https://www.youtube.com/watch?v=r99jsChi4HU)). The latter activities are not include in the salary request. We also request \$.x.xxx funding for the attendance of one conference (addressing a potential user-base).
+We request \$xx,xxx for the salary of MS (project lead) for 0.5 ft working hours a week. This sum is based on the salary for a PostDoc in natural sciences, including the applicants years of experience. The remainder of working hours he will spend on developing and giving courses/workshops (see FAIReLABS; Section \@ref(sec:Start)) that entail best practices in data management, reproducible science and data science with R (see e.g., [PAGES workshop youtube](https://www.youtube.com/watch?v=r99jsChi4HU)). The latter activities are not include in the salary request. We also request \$x,xxx funding for the attendance of one conference (addressing a potential user-base).
 
 
 <!-- 

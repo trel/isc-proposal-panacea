@@ -15,7 +15,20 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE, echo= FALSE)
 # run for bibtex of pkgs
 pkgs <- c("readr", "vroom", "xrftools", "isoreader", "point", "cpp11", 
           "devtools", "pkgdown", "tibble") 
+rirods <- bibentry(
+  key = "rirods",
+  bibtype = "Misc",
+  title = "The rirods package enables access to file objects in the iRODS data broker system from R",
+  author =  c("Radovan Chytracek", "Bernhard Sonderegger", "Richard Cote", "Russell Terrell"),
+  year = "2015",
+  url = "https://github.com/irods/irods_client_library_r_cpp/blob/master/DESCRIPTION"
+  )
 knitr::write_bib(pkgs, "proposal/packages.bib", prefix = "") 
+pkgs <- bibtex::read.bib("proposal/packages.bib")
+bibtex::write.bib(
+  purrr::reduce(list(rirods, pkgs), append), 
+  file = "proposal/packages.bib"
+  )
 ```
 
 ```{r autodoc, child='proposal/signatories.Rmd', eval=TRUE}

@@ -1,4 +1,5 @@
 # The proposal
+
 <!--
 This is where the proposal should be outlined. 
 -->
@@ -11,6 +12,7 @@ Besides addressing the vendor lock-in of analytical data and optimized data mana
 
 1. New software updates of the vendor-supplied software that impact the output format can be more easily accommodated, and do not require cumbersome updates of custom R solutions. 
 2. Data formats from defunct software and vendors can be more conveniently analysed and/or archived in a central data management system.
+
 3. The integration of (meta)data from different sources can aid online monitoring of lab performance. For example, centralised data management could theoretically provide opportunities for early detection of problems, such as sample/reagent pollution and anomalous lab-environmental conditions. The latter problems would be much harder to detect with stand-alone vendor supplied solutions.
 
 To conclude, we want to put scientist back in control of their data, without having to rely on closed-sourced vendor software. This could save countless working hours and large sums of taxpayer money, which can then be spend on other tasks. Together with the benefits of integrated labs, this could lead to new innovations, more transparent science, and improve the inclusiveness of the academic community. 
@@ -79,7 +81,7 @@ knitr::kable(xcp, caption = "Provisional pancaea return value, based on the anal
 ```
 
 
-Based on a twofold reasoning, we propose encoding this solution in the C++ language. Firstly, we want to ensure compatibility with external data management software, notably iRODS. In this use-case, the compiled C++ source code could be adapted to create a standardized protocol for ingestion into a central data management system. The second consideration is performance related, e.g., the demanding operation of tokenizing a large corpus. This approach of extending the R core interpreter with C++ ensures a lean and fast approach. In addition, the usage of the R package cpp11 [@cpp11] enables the Altrep framework for lazy load of data in R, ensuring further speed and convenience of the functionality.  
+Based on a twofold reasoning, we propose encoding this solution in the C++ language. Firstly, we want to ensure compatibility with external data management software, notably iRODS. In this use-case, the compiled C++ source code of *panacea* could be adapted to create a standardized protocol for ingestion into a central data management system. The R package *rirods* [@rirods] will be used to query the iRODS API. This auxiliary package will, however, require some maintenance and adaptations. The second consideration is performance related, e.g., the demanding operation of tokenizing a large corpus. This approach of extending the R core interpreter with C++ ensures a lean and fast approach. In addition, the usage of the R package *cpp11* [@cpp11] enables the Altrep framework for lazy load of data in R, ensuring further speed and convenience of the functionality.  
 
 
 <!--
