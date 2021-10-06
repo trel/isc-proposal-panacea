@@ -9,7 +9,7 @@ An optional section would be for R-Core signatories where changes to R are propo
 
 **Martin Schobben**, FAIReLABS, Utrecht, the Netherlands    
 **Johan Renaudie**, Museum für Naturkunde ‐ Leibniz Institute for Evolution and Biodiversity Science, Berlin, Germany      
-**Terrell Russell**, iRODS, Chapel Hill, United States of America 
+**Terrell Russell**, iRODS Consortium, Chapel Hill, United States of America 
 
 <!-- 
 Who are the people responsible for actually delivering the project if the proposal gets accepted and are already signed up and rearing to go?

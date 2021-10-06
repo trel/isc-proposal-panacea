@@ -19,7 +19,7 @@ rirods <- bibentry(
   key = "rirods",
   bibtype = "Misc",
   title = "The rirods package enables access to file objects in the iRODS data broker system from R",
-  author =  c("Radovan Chytracek", "Bernhard Sonderegger", "Richard Cote", "Russell Terrell"),
+  author =  c("Radovan Chytracek", "Bernhard Sonderegger", "Richard Cote", "Terrell Russell"),
   year = "2015",
   url = "https://github.com/irods/irods_client_library_r_cpp/blob/master/DESCRIPTION"
   )
