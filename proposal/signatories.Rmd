@@ -25,8 +25,10 @@ Who are the people who have actively helped with this proposal but won't necessa
 ## Consulted
 
 **William Foster**, University Hamburg, Hamburg, Germany   
-**Lubos Polerecky**, Utrecht University, Utrecht, the Netherlands    
-**Jan Voskuil**, CEO Taxonic & Ontologist, The Hague, the Netherlands
+**Lubos Polerecky**, Utrecht University, Utrecht, the Netherlands        
+**Francien Peterse**, Utrecht University, Utrecht, the Netherlands    
+**Mariette Wolthers**, Utrecht University, Utrecht, the Netherlands      
+**Jan Voskuil**, Taxonic & Ontologist, The Hague, the Netherlands   
 <!-- 
 Who has been given the opportunity to provide feedback on the proposal? This should include any R Consortium & ISC members who the proposal has been discussed with.
 -->
