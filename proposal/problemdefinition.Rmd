@@ -6,8 +6,10 @@ Analytical laboratories are a huge source of data. Unfortunately, laboratory dat
 
 Hence, a more universal solution to this problem of analytical data collection and harmonisation is therefore a rewarding endeavour for future innovations and discoveries. In addition, FAIR data is conducive to an inclusive, connected worldwide academic community---providing opportunities for developing countries that do not have the same resources for data generation as wealthy countries.
 
+(ref:cap) [iRODS](https://irods.org/)
 
-```{r intlab, out.width="70%", fig.cap="Integrated lab solution versus traditional unconnected lab set-ups.", echo= FALSE}
+
+```{r intlab, out.width="70%", fig.cap="Integrated lab solution versus traditional unconnected lab set-ups. (ref:cap) = Integrated Rule-Oriented Data System.", echo= FALSE}
 knitr::include_graphics("proposal/datamanagement_infra.png")
 ```
 
