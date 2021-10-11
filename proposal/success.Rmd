@@ -5,7 +5,7 @@ Projects should have a definition of done that is measurable, and a thorough und
 
 ## Definition of done
 
-The deliverable "Installable package on CRAN and presentation" of Section \@ref(sec:Technical) defines achievement of the minimal goal.
+The deliverable "Installable package on CRAN and presentation" of Section \@ref(sec:Technical) defines achievement of the minimal viable product (Solution 1).
 <!-- 
 What does success look like? 
 -->
@@ -22,12 +22,12 @@ How will we know when success is achieved, what markers can we use along the way
 How could this be extended / developed in the future by yourself and/or the community in general?
 -->
 
-Future work in the sense of technical innovation likely entails application to different file types, such as binary files. Further progress revolves around integration of the package with the services offered by FAIReLABS. It will enable consulting and implementing better resources for data management in analytical laboratories as well as help teaching efforts focussing on data management and reproducible science. In addition, we will potentially consider writing a paper concerning the package for the [Journal of Open Source Software](https://joss.theoj.org/). And, continuously advertise usage of the package by active engaging with target user-base at conferences and on social media. 
+Future work in the sense of technical innovation likely entails application to different file types, such as binary files. In addition, we intend to develop Python package with the same scope. Further progress revolves around integration of the package with the services offered by FAIReLABS. It will enable consulting and implementing better resources for data management in analytical laboratories as well as help teaching efforts focussing on data management and reproducible science. In addition, we will potentially consider writing a paper concerning the package for the [Journal of Open Source Software](https://joss.theoj.org/). And, continuously advertise usage of the package by active engaging with target user-base at conferences and on social media. 
 
 
 ## Key risks
 
-One of the key risks in the process of developing the package is the selection of the appropriate solution (as listed in Section \@ref(sec:Detail)). Hence the early identification of this bottleneck and the formulation of two contingency plans will help alleviate these risks to some extend. Problems and delays in terms of coordinating community feedback (especially desired use-cases) and contributions (mainly solutions as listed above) could stem from a lack of consensus on the specific solution to be adpoted. Hence we aim to address this at the earliest stages of the project (Months 1--2). In terms of tools and technology, we foresee the largest problem in access to enough analytical data. Hence we ensured that we have already a minimal set of data available for testing purposes. All the before mentioned risks could increase the time required to develop the product. However, by defining a set of minimal deliverables, we can at least sketch an accurate image of the current state of data management practices in analytical laboratory facilities and develop a road-map on how to improve these infrastructures. It is also likely that, as a minimum, solution 1 yields a viable product.
+One of the key risks in the process of developing the package is the selection of the appropriate solution (as listed in Section \@ref(sec:Detail)). Hence the early identification of this bottleneck and the formulation of two contingency plans will help alleviate these risks to some extend. Problems and delays in terms of coordinating community feedback (especially desired use-cases) and contributions (mainly solutions as listed above) could stem from a lack of consensus on the specific solution to be adopted. Hence we aim to address this at the earliest stages of the project (Months 1--2). In terms of tools and technology, we foresee the largest problem in access to enough analytical data. Hence we ensured that we have already a minimal set of data available for testing purposes. All the before mentioned risks could increase the time required to develop the product. However, by defining a set of minimal deliverables, we can at least sketch an accurate image of the current state of data management practices in analytical laboratory facilities and develop a road-map on how to improve these infrastructures. It is also foreseen that solution 1 yields a minimal viable product.
 
 <!-- 
 What sort of things could come up that can delay or break the project?

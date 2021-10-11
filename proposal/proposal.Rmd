@@ -47,16 +47,32 @@ The next two solutions would be preceded by a step entailing text normalization 
 
 ***Solution #3*** would be almost free of human intervention. This method could be reminiscent of part-of-speech tagging in order to recognise the individual entities of the triplet; variables, values, and units. Recognition of larger structures (i.e, tables) might be based on chunking approaches that reminisce the methods serving context free grammar and/or dependency grammar solutions in NLP [@Jurafsky2021].
 
+```{r solutions, echo=FALSE}
+sols <- tibble::tibble(
+  Solutions = c("\\#1", "\\#3", "\\#3"),
+  `Human-action` = c("high", "medium", "low"),
+  Risk = c("low", "medium", "high")
+) 
+knitr::kable(
+  sols,
+  caption = "The required human intervention to parse unstructured data for 
+  each of the proposed solution, and the perceived risk of developing 
+  the associated solution.", 
+  escape = FALSE
+  ) 
+```
+
+
 Ultimately, the (meta)data tagging solution(s) will form the engine of the to-be-developed core function of *panacea*. This function for the read-out of the instrument data will then proceed with parsing of unstructured data into a more convenient human and machine-readable format. This output is preliminary envisioned to constitute a *tibble* [@tibble] with columns; variable (of type character), unit (of type character), relation (of type list), which constitutes a network of relations describing structures in the original document, and values (of type list) (see Table \@ref(tab:output)). The user-interface of the function will be modelled after *readr* [@readr] and *vroom* [@vroom].
 
 ```{r output, echo= FALSE}
 set.seed(22)
 xcp <- tibble::tibble(
-  variable = c("Date Time", "Sample ID", "Peak Height Distribution", "EMHV", 
+  Variable = c("Date Time", "Sample ID", "Peak Height Distribution", "EMHV", 
                "Position-x", "Position-y", "Position-z", "Time", "Count"),
-  unit = c(NA_character_, NA_character_, "V", "mV", rep("um", 3), "s", 
+  Unit = c(NA_character_, NA_character_, "V", "mV", rep("um", 3), "s", 
            NA_character_),
-  relation = list(
+  Relation = list(
     c("file 1", "line 1", "section 1"),
     c("file 1", "line 1", "section 2"),
     c("file 1", "line 3", "section 1"),
@@ -67,7 +83,7 @@ xcp <- tibble::tibble(
     c("file 1", "table 1", "column 1"),
     c("file 1", "table 1", "column 2")
   ),
-  values = list(
+  Values = list(
     as.character(lubridate::ymd_hm("2021-09-20  20:15")),
     "MON-233",
     210,
@@ -79,7 +95,11 @@ xcp <- tibble::tibble(
     rpois(10, 60)
     )
   )  
-knitr::kable(xcp, caption = "Provisional pancaea return value, based on the analytical data output of a virtual machine of Fig. \\@ref(fig:input).")
+knitr::kable(
+  xcp, 
+  caption = "Provisional pancaea return value, based on the analytical data 
+  output of a virtual machine of Fig. \\@ref(fig:input)."
+  )  
 ```
 
 

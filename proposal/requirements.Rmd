@@ -1,6 +1,6 @@
 # Requirements
 
-The realisation of this package requires a collaborative environment that includes the potential users, and their specific requirements for processing analytical data, as well as developers and data scientist with expertise in a range of disciplines. In regards to development, we will consult experts of data management (i.e., iRODS) and Natural Language Processing, and the integration of C++ and R (a number of them are already contacted, see above).
+The realisation of this package requires a collaborative environment that includes the potential users, and their specific requirements for processing analytical data, as well as developers and data scientist with expertise in a range of disciplines. In regards to development, we brought together a multi-disciplinary team, and consulted experts of data management and Natural Language Processing, and the integration of C++ and R.
 
 <!-- 
 An idea of what is required to make the project actually happen
@@ -8,7 +8,7 @@ An idea of what is required to make the project actually happen
 
 ## People
 
-The project team will lead the gathering of specific use-cases and form a picture of the current state of data management practices in analytical laboratories. In addition, they take control in all steps of development, documentation and outreach of the package. Dedicated contributors and consultants have been contacted and their expertise is regarded as an essential aid for successful deployment of the plan.
+The project team will try to form a comprehensive picture of the current state of data management practices in laboratories through direct interaction with lab-users. In addition, they take control in all steps of development, documentation and outreach of the package. Dedicated consultants have been contacted and their expertise is regarded as an essential aid for successful deployment of the plan.
 
 The project lead (MS) is an Earth scientist with 10 years of experience in academic research, and he has worked in several analytical laboratory facilities (MfN Berlin, University of Leeds, and Utrecht University). He also has a solid basis in data-analysis and programming with R, and has started developing packages for the processing of isotope chemical data (see [point](https://martinschobben.github.io/point/)). Teaching and helping others to encode R solutions has been another of his passions, such as the development of [workshops](https://www.youtube.com/watch?v=r99jsChi4HU), and by founding of an R help desk at the UU ([uu-code-club](https://github.com/uu-code-club)).
 
@@ -21,7 +21,7 @@ Who needs to be involved, what's the proposed structure, what will it take to ge
 
 ## Processes
 
-A prime controller in the initiation of the project is the report (and blog post) in the first two months (see, deliverable Months 1--2; Section \@ref(sec:Technical)), which tries to give an overview of existing data management infrastructures and common data models (i.e., instrument output) in analytical laboratory settings. Based on this deliverable, adoptions to the initial plan can potentially be made. Specifically, it helps select what solution should be adopted for data selection and harmonisation (see, Solutions 1 and 2; Section \@ref(sec:Detail)). To foster an efficient start-up and continues collaboration, we adopt a strategy of publishing advancements in development at an early stage, so that testing and evaluation can begin as soon as possible. Feedback on these early developments is sought actively through our dedicated list of contributors and consultants, but also the community at large through Twitter and other channels. Throughout this process, we will make sure that the code of conduct, as outlined in Section \@ref(sec:Start), is adhered to.
+A prime controller in the initiation of the project is the report (and blog post) in the first two months (see, deliverable Months 1--2; Section \@ref(sec:Technical)), which tries to give an overview of existing data management infrastructures and common data models (i.e., instrument output) in analytical laboratory settings. Based on this deliverable, adoptions to the initial plan can be made. Specifically, it helps select what solution should be adopted for data selection and harmonisation. To foster an efficient start-up and continues collaboration, we adopt a strategy of publishing advancements in development at an early stage, so that testing and evaluation can begin as soon as possible. Feedback on these early developments is sought actively through our dedicated list of consultants, but also the community at large through Twitter and other channels. Throughout this process, we will make sure that the code of conduct, as outlined in Section \@ref(sec:Start), is adhered to.
 
 <!-- 
 What processes need to be put in place e.g. codes of conduct, regular ISC meetings, handover to the community at large?
