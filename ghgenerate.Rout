@@ -1,0 +1,34 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> proposal <- "panacea: Portable ANalytical data Aggregation and Coordination for database Entry and Access"
+> proposal.file <- "isc-proposal.Rmd"
+> author <- "Martin Schobben"
+> 
+> rmarkdown::render(proposal.file, output_format="bookdown::html_document2",
++                   output_dir="out", quiet=TRUE)
+> rmarkdown::render(proposal.file, output_format="bookdown::pdf_book",
++                   output_dir="out", quiet=TRUE)
+! Argument of \Hy@tempa has an extra }.
+<inserted text> 
+                \par 
+l.204 ...irtual machine of Fig. \\ref{fig:input}.}
+
+Error: LaTeX failed to compile /home/travis/build/FAIReLABS/isc-proposal-panacea/out/isc-proposal.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See isc-proposal.log for more info.
+Execution halted

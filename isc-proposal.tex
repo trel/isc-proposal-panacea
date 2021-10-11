@@ -1,0 +1,429 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={panacea: Portable ANalytical data Aggregation and Coordination for database Entry and Access},
+            pdfauthor={Martin Schobben},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+
+\title{panacea: Portable ANalytical data Aggregation and Coordination for database Entry and Access}
+\providecommand{\subtitle}[1]{}
+\subtitle{ISC proposal}
+\author{Martin Schobben}
+\date{2021-10-11}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{signatories}{%
+\section{Signatories}\label{signatories}}
+
+\hypertarget{project-team}{%
+\subsection{Project team}\label{project-team}}
+
+\textbf{Martin Schobben}, FAIReLABS, Utrecht, the Netherlands\\
+\textbf{Janou Koskamp}, Utrecht University, Utrecht, the Netherlands\\
+\textbf{Johan Renaudie}, Museum für Naturkunde ‐ Leibniz Institute for Evolution and Biodiversity Science, Berlin, Germany\\
+\textbf{Terrell Russell}, iRODS Consortium, Chapel Hill, United States of America
+
+\hypertarget{contributors}{%
+\subsection{Contributors}\label{contributors}}
+
+\hypertarget{consulted}{%
+\subsection{Consulted}\label{consulted}}
+
+\textbf{Jan Voskuil}, Taxonic \& Ontologist, The Hague, the Netherlands\\
+\textbf{Francien Peterse}, Utrecht University, Utrecht, the Netherlands\\
+\textbf{Lubos Polerecky}, Utrecht University, Utrecht, the Netherlands\\
+\textbf{Mariette Wolthers}, Utrecht University, Utrecht, the Netherlands\\
+\textbf{William Foster}, University Hamburg, Hamburg, Germany
+
+\hypertarget{the-problem}{%
+\section{The Problem}\label{the-problem}}
+
+Analytical laboratories are a huge source of data. Unfortunately, laboratory data streams are often fragmented and not well curated. We reason that this is caused by the range of analytical instruments populating the lab---each with their own closed-sourced vendor-supplied data models and software suites for subsequent data processing, analysing, and diagnostics (see ``Unconnected Lab'' Fig \ref{fig:intlab}). These various data models stored on local devices, if accessible at all, are not easily integrated in a centralised data management infrastructure. This so-called ``vendor lock-in'' further prevents transparency of the workflow from raw to analysed data. Although low-level access to raw data and insights in workflows is not necessary for all scientist, it can be important for special purpose research questions, possibly sparking new innovations and discoveries. The fragmented, and partly obscured, nature of data streams from analytical laboratories therefore conflicts with data management principles, such as formalised in the Findable, Accessible, Interoperable, and Reusable (FAIR) data guiding principles (Wilkinson et al. 2016), and have a negative impact on the reproducibility of science. Existing solutions for reading data, such as \emph{readr} (Wickham and Hester 2021) and \emph{vroom} (Hester and Wickham 2021), can be cumbersome for this particular task, as the unstructured and large (\textgreater{}1,000 lines) (meta)data formats prevents straightforward parsing. This has resulted in a series of custom solutions, e.g., xrftools (Dunnington 2021), isoreader (Kopf, Davidheiser-Kroll, and Kocken 2021), and point (Schobben 2021), for various machine-specific data models (this is a non-exhaustive list).
+
+Hence, a more universal solution to this problem of analytical data collection and harmonisation is therefore a rewarding endeavour for future innovations and discoveries. In addition, FAIR data is conducive to an inclusive, connected worldwide academic community---providing opportunities for developing countries that do not have the same resources for data generation as wealthy countries.
+
+
+
+\begin{figure}
+\includegraphics[width=0.7\linewidth]{proposal/datamanagement_infra} \caption{Integrated lab solution versus traditional unconnected lab set-ups. \href{https://irods.org/}{iRODS} = Integrated Rule-Oriented Data System.}\label{fig:intlab}
+\end{figure}
+
+\hypertarget{the-proposal}{%
+\section{The proposal}\label{the-proposal}}
+
+\hypertarget{overview}{%
+\subsection{Overview}\label{overview}}
+
+The integrated lab is a solution to centralise data management of the traditional unconnected lab (see ``Integrated Lab'' Fig \ref{fig:intlab}). A first step in the realisation of an integrated lab would encompass a solution for collecting and harmonising data streams from various lab instruments. The development of the R package \emph{panacea} will attempt to provide a more universal solution for parsing unstructured (meta)data formats in a rectangular format---notably, separating variables, units, and values. This solution would therefore make analytical data more easily accessible for both humans and machines. In extension we intend that this solution centralises data management of labs by facilitating automatic data ingest (i.e., data import) as a subsystem of \href{https://irods.org/}{iRODS} (Integrated Rule-Oriented Data System) (Rajasekar et al. 2010, 2015).
+
+Besides addressing the vendor lock-in of analytical data and optimized data management solutions, this tool has several other benefits:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  New software updates of the vendor-supplied software that impact the output format can be more easily accommodated, and do not require cumbersome updates of custom R solutions.
+\item
+  Data formats from defunct software and vendors can be more conveniently analysed and/or archived in a central data management system.
+\item
+  The integration of (meta)data from different sources can aid online monitoring of lab performance. For example, centralised data management could theoretically provide opportunities for early detection of problems, such as sample/reagent pollution and anomalous lab-environmental conditions. The latter problems would be much harder to detect with stand-alone vendor supplied solutions.
+\end{enumerate}
+
+To conclude, we want to put scientist back in control of their data, without having to rely on closed-sourced vendor software. This could save countless working hours and large sums of taxpayer money, which can then be spend on other tasks. Together with the benefits of integrated labs, this could lead to new innovations, more transparent science, and improve the inclusiveness of the academic community.
+
+\hypertarget{sec:Detail}{%
+\subsection{Detail}\label{sec:Detail}}
+
+Observational data generated by commercial analytical instrumentation and accompanying software is often recorded as unstructured (text) files.\footnote{Note, that the methods proposed here still require a vendor-supplied electrical-to-digital signal conversion} In this context we refer to ``unstructured'' as incorporating tab-delimited tables (Fig. \ref{fig:input}) of data intermingled with lines of, one or more, variable-value-unit triplets (see line 1,3 and 4 of Fig. \ref{fig:input}). On top of that, files often consists of \textgreater{}1,000 lines, and syntactic inconsistencies are not uncommon.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{proposal/excerpt} \caption{An excerpt of how unstructured raw data files from analytical laboratory equipment typically looks like. This is an imaginary excerpt modelled after the main applicants experience with this type of data output. Note, that this is still a fairly structured data format in respect to what one can find in the wild.}\label{fig:input}
+\end{figure}
+
+This lack of structure is perceivably less dramatic than that encountered for information entrained in emails and novels. Nonetheless, the primary task of identifying variables, values, and units, as distinct entities as well as larger structures (e.g., tables), is the most challenging task in this undertaking.
+
+At present we envision three possible solutions, which require varying degrees of human intervention.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A helper function to aid the location of variables based on user input.
+\item
+  A human-crafted (and adaptable) rule based system.
+\item
+  A natural language processing (NLP) approach involving self-supervised machine learning.
+\end{enumerate}
+
+\textbf{\emph{Solution \#1}} requires the input of variable names and their context (i.e., a table or line), whereby regular expression locate the respective variables for subsequent parsing. This approach would thus require considerable knowledge of the end-user considering the raw data and its internal organization, and is only a slight deviation of widely popular packages such as \emph{readr} (Wickham and Hester 2021) and \emph{vroom} (Hester and Wickham 2021). It is therefore also the most feasible of the proposed solutions.
+
+The next two solutions would be preceded by a step entailing text normalization through tokenization. Tokenization will be performed with cascades of regular expressions for word (entity) delimiters. These delimiters will likely not be based on word boundaries, but instead use a combination of punctuations and tabs as delimiters. On the other hand, special character and alphanumeric combinations, as occur in paths and dates, should constitute one token, and require special consideration.
+
+\textbf{\emph{Solution \#2}} would require writing a set of more-or-less universal rules that describe typical formatting structures of analytical instrument output. After preprocessing, we suspect that it is possible to generalise that all numeric tokens (strings) can be tagged as values. In turn, frequencies of the tokens in a collection of files can then help separate the remaining non-numeric values from the variables and units. This would roughly operate reversed to the tf-idf algorithm (Jurafsky and Martin 2021)---tokens with constant document frequencies are signposts for variables, whereas tokens representing values of a categorical variable might have varying document frequencies. A dictionary of SI units, and derivations thereof, could, in turn, filter units from variables. Finally, a set of rules based on sentence boundaries, punctuation, and delimiters might help recognize larger structures (e.g., tables) that can help tie together the variables and their constituent units and variable values.
+
+\textbf{\emph{Solution \#3}} would be almost free of human intervention. This method could be reminiscent of part-of-speech tagging in order to recognise the individual entities of the triplet; variables, values, and units. Recognition of larger structures (i.e, tables) might be based on chunking approaches that reminisce the methods serving context free grammar and/or dependency grammar solutions in NLP (Jurafsky and Martin 2021).
+
+\begin{table}
+
+\caption{\label{tab:solutions}The required human intervention to parse unstructured data for 
+  each of the proposed solution, and the perceived risk of developing 
+  the associated solution.}
+\centering
+\begin{tabular}[t]{l|l|l}
+\hline
+Solutions & Human-action & Risk\\
+\hline
+\#1 & high & low\\
+\hline
+\#3 & medium & medium\\
+\hline
+\#3 & low & high\\
+\hline
+\end{tabular}
+\end{table}
+
+Ultimately, the (meta)data tagging solution(s) will form the engine of the to-be-developed core function of \emph{panacea}. This function for the read-out of the instrument data will then proceed with parsing of unstructured data into a more convenient human and machine-readable format. This output is preliminary envisioned to constitute a \emph{tibble} (Müller and Wickham 2021) with columns; variable (of type character), unit (of type character), relation (of type list), which constitutes a network of relations describing structures in the original document, and values (of type list) (see Table \ref{tab:output}). The user-interface of the function will be modelled after \emph{readr} (Wickham and Hester 2021) and \emph{vroom} (Hester and Wickham 2021).
+
+\begin{table}
+
+\caption{\label{tab:output}Provisional pancaea return value, based on the analytical data 
+  output of a virtual machine of Fig. \\ref{fig:input}.}
+\centering
+\begin{tabular}[t]{l|l|l|l}
+\hline
+Variable & Unit & Relation & Values\\
+\hline
+Date Time & NA & file 1   , line 1   , section 1 & 2021-09-20 20:15:00\\
+\hline
+Sample ID & NA & file 1   , line 1   , section 2 & MON-233\\
+\hline
+Peak Height Distribution & V & file 1   , line 3   , section 1 & 210\\
+\hline
+EMHV & mV & file 1   , line 3   , section 2 & 2350\\
+\hline
+Position-x & um & file 1   , line 4   , section 1 & 12\\
+\hline
+Position-y & um & file 1   , line 4   , section 2 & 2\\
+\hline
+Position-z & um & file 1   , line 4   , section 3 & 100\\
+\hline
+Time & s & file 1  , table 1 , column 1 & 1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\
+\hline
+Count & NA & file 1  , table 1 , column 2 & 56, 60, 64, 64, 57, 59, 58, 58, 62, 54\\
+\hline
+\end{tabular}
+\end{table}
+
+Based on a twofold reasoning, we propose encoding this solution in the C++ language. Firstly, we want to ensure compatibility with external data management software, notably iRODS. In this use-case, the compiled C++ source code of \emph{panacea} could be adapted to create a standardized protocol for ingestion into a central data management system. The R package \emph{rirods} (Chytracek et al. 2015) will be used to query the iRODS API. This auxiliary package will, however, require some maintenance and adaptations. The second consideration is performance related, e.g., the demanding operation of tokenizing a large corpus. This approach of extending the R core interpreter with C++ ensures a lean and fast approach. In addition, the usage of the R package \emph{cpp11} (Hester 2021) enables the Altrep framework for lazy load of data in R, ensuring further speed and convenience of the functionality.
+
+\hypertarget{project-plan}{%
+\section{Project plan}\label{project-plan}}
+
+\hypertarget{sec:Start}{%
+\subsection{Start-up phase}\label{sec:Start}}
+
+The development of \emph{panacea} is a central part of a newly initiated consortium; FAIReLABS\footnote{FAIR refers to the guiding principles for data: Findable, Accessible, Interoperable, and Reusable (Wilkinson et al. 2016)}, dedicated to researching and developing solutions to make laboratory data, throughout the whole cycle from generation to analysing, more transparent, accessible, and customisable. Thus FAIReLABS, and the here proposed package, is meant to be conducive to innovation within an analytical laboratory environment, and foster inclusiveness through open science. Besides research and development, it is intended that FAIReLABS provides courses/workshops in data management practices and reproducible science as well as consultation in facilitating the transition to an integrated lab (see Fig. \ref{fig:intlab}). The initial step is already undertaken by starting a new GitHub Organisation for FAIReLABS, which also host this proposal as a public repository. In turn, package development encompasses soliciting specific use-cases from the R community and laboratory facilities. A close collaboration with the Department of Earth Sciences, Utrecht University (UU), the Netherlands, and their analytical laboratory infrastructure, is already foreseen. Nonetheless, the development will benefit from having a good overview of the types of data and data models produced by analytical equipment in a range of laboratories. We will opt for an \href{https://opensource.org/licenses/MIT}{MIT license} and a code of conduct, which will follow the \href{https://www.contributor-covenant.org/}{Contributor Covenant} guide lines. Combined this ensures that contributions to the package can be done in a safe, inclusive, welcoming, and harassment-free environment conductive for collaborative package development, and ensuring down-stream re-usage of the developed software. Reporting of the progress of the project to both (lab-)users and developers will help ensure that we stay on track and thus develop a solution that has a broad future implementation.
+
+\hypertarget{sec:Technical}{%
+\subsection{Technical delivery}\label{sec:Technical}}
+
+The duration of the project will be 12 months. The ``\textbf{deliverable}'' gives a convenient measure of project's progress.
+
+\textbf{\emph{Months 1--2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Documentation of use-cases combined with on-premise visits to lab facilities.
+\item
+  Determine the feasibility of the solutions for the engine of the core function as discussed in section (\ref{sec:Detail}) and make a selection.
+\item
+  \textbf{Deliverable:} We report our finding on the current state of data management infrastructures and common data models (i.e., instrument output) in analytical laboratory settings as a blog post.
+\end{itemize}
+
+\textbf{\emph{Months 3--4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Start with basic package set-up with \emph{devtools} (Wickham, Hester, and Chang 2021), create source scripts in C++ for loading data files.
+\item
+  Follow best practices from the start of package development; e.g., documenting progress, maintaining a functioning Git master branch and usage of development branches for experimental updates. This will be published on Github from the start, and tags are created when milestones are hit to benefit progress tracking. In addition, unit tests are constantly developed to ensure that a particular behaviour of a function is, and remains, correct (and also regularly checking code coverage of said tests). And, lastly testing code and documentation with \texttt{R\ CMD\ check} and with continuous integration provided by \href{https://travis-ci.org/}{Travis CI}.
+\item
+  \textbf{Deliverable:} A GitHub repo with the basis of the package.
+\end{itemize}
+
+\textbf{\emph{Months 5--6}}
+
+\begin{itemize}
+\tightlist
+\item
+  Minimal functionality to locate variables within their context (Solution 1), and test on different use-cases.
+\item
+  \textbf{Deliverable:} A tag in the GitHub repo annotating the milestone for the minimal viable product.
+\end{itemize}
+
+\textbf{\emph{Months 7--8}}
+
+\begin{itemize}
+\tightlist
+\item
+  Integrate C++ with R and implement altrep framework for lazy access.
+\item
+  Installable package on GitHub with documentation as vignettes and website with \emph{pkgdown} (Wickham and Hesselberth 2020).
+\item
+  \textbf{Deliverable:} Installable and documented package on GitHub.
+\end{itemize}
+
+\textbf{\emph{Months 9--10}}
+
+\begin{itemize}
+\tightlist
+\item
+  Test use cases for the integrated lab and using C++ code basis for centralised data management (iRODS) in a laboratory setting (UU).
+\item
+  Optional: Further development on the engine for data collecting and harmonization, e.g., probing solutions 2 and 3.
+\item
+  \textbf{Deliverable:} A tag in the GitHub repo annotating the milestone of successful implementation for integration with iRODS.
+\end{itemize}
+
+\textbf{\emph{Months 11--12}}
+
+\begin{itemize}
+\tightlist
+\item
+  Publish on CRAN.
+\item
+  Include usage of package in teaching/course material provided by FAIReLABS.
+\item
+  Present package at conference(s) targeting users (natural science conferences) and/or developers (UseR or specific open science conferences).
+\item
+  Optional: Further development on the engine for data collecting and harmonization, e.g., probing solutions 2 and 3.
+\item
+  \textbf{Deliverable:} Installable package on CRAN and presentation.
+\end{itemize}
+
+\hypertarget{other-aspects}{%
+\subsection{Other aspects}\label{other-aspects}}
+
+We will garner attention on the problem of unconnected labs and their bearing on open science, and our proposed solutions, through several channels (see also the timeline above). Firstly, we intend to describe the problem in more detail by gathering more insight from specific laboratory settings in a dedicated blog post at the start of the project. The former post also proposes strategies to tackle this problem, thereby setting the stage for a collaborative platform for the development of the package. Besides being an integral aspect for future development of courses and consultation delivered by the FAIReLABS organisation (see above), we actively seek to advertise the end-product by presenting our finding at conferences; either user-specific (natural science conferences) and/or the developers community (e.g.~UseR meeting 2022).
+
+\hypertarget{requirements}{%
+\section{Requirements}\label{requirements}}
+
+The realisation of this package requires a collaborative environment that includes the potential users, and their specific requirements for processing analytical data, as well as developers and data scientist with expertise in a range of disciplines. In regards to development, we brought together a multi-disciplinary team, and consulted experts of data management and Natural Language Processing, and the integration of C++ and R.
+
+\hypertarget{people}{%
+\subsection{People}\label{people}}
+
+The project team will try to form a comprehensive picture of the current state of data management practices in laboratories through direct interaction with lab-users. In addition, they take control in all steps of development, documentation and outreach of the package. Dedicated consultants have been contacted and their expertise is regarded as an essential aid for successful deployment of the plan.
+
+The project lead (MS) is an Earth scientist with 10 years of experience in academic research, and he has worked in several analytical laboratory facilities (MfN Berlin, University of Leeds, and Utrecht University). He also has a solid basis in data-analysis and programming with R, and has started developing packages for the processing of isotope chemical data (see \href{https://martinschobben.github.io/point/}{point}). Teaching and helping others to encode R solutions has been another of his passions, such as the development of \href{https://www.youtube.com/watch?v=r99jsChi4HU}{workshops}, and by founding of an R help desk at the UU (\href{https://github.com/uu-code-club}{uu-code-club}).
+
+JR, also a geoscientist, has expertise in data management (being the main maintainer and developer of Neptune; one of the largest paleontology database), data analysis (primarily in R and python), machine learning (see e. g. \href{https://github.com/plannapus/RadiolarianClassifier}{a CNN-based radiolarian classifier}) and scientific software development (see e. g. \href{http://github.com/plannapus/NSB_ADP_wx}{NSB\_ADP\_wx} or \href{http://github.com/plannapus/Raritas}{Raritas}; two pieces of software designed in particular for increasing data reproducibility and reusability in paleontology and stratigraphy). JR was also the organizer of a programming club at the MfN (\href{http://github.com/plannapus/MfN-Code-Clinic}{Mfn Code Clinic}) from 2015 to 2018.
+
+\hypertarget{processes}{%
+\subsection{Processes}\label{processes}}
+
+A prime controller in the initiation of the project is the report (and blog post) in the first two months (see, deliverable Months 1--2; Section \ref{sec:Technical}), which tries to give an overview of existing data management infrastructures and common data models (i.e., instrument output) in analytical laboratory settings. Based on this deliverable, adoptions to the initial plan can be made. Specifically, it helps select what solution should be adopted for data selection and harmonisation. To foster an efficient start-up and continues collaboration, we adopt a strategy of publishing advancements in development at an early stage, so that testing and evaluation can begin as soon as possible. Feedback on these early developments is sought actively through our dedicated list of consultants, but also the community at large through Twitter and other channels. Throughout this process, we will make sure that the code of conduct, as outlined in Section \ref{sec:Start}, is adhered to.
+
+\hypertarget{tools-tech}{%
+\subsection{Tools \& Tech}\label{tools-tech}}
+
+For successful delivery of the package we need access to large quantities of raw data from various analytical instruments. We have secured access to data from Utrecht University and the MfN Berlin. GitHub is essential for the collaborative character of the work. No additional computing facilities are envisioned at the moment.
+
+\hypertarget{funding}{%
+\subsection{Funding}\label{funding}}
+
+We request \$xx,xxx for the salary of MS (project lead) for 0.5 ft working hours a week. This sum is based on the salary for a PostDoc in natural sciences, including the applicants years of experience. The remainder of working hours he will spend on developing and giving courses/workshops (see FAIReLABS; Section \ref{sec:Start}) that entail best practices in data management, reproducible science and data science with R (see e.g., \href{https://www.youtube.com/watch?v=r99jsChi4HU}{PAGES workshop youtube}). The latter activities are not include in the salary request. We also request \$x,xxx funding for the attendance of one conference (addressing a potential user-base).
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+Salary to support the project lead (MS) is requested. He will dedicate 0.5 ft (18 hours a week - common under European labour laws) of his time to the development, documentation as well as outreach of the package.
+
+\hypertarget{success}{%
+\section{Success}\label{success}}
+
+\hypertarget{definition-of-done}{%
+\subsection{Definition of done}\label{definition-of-done}}
+
+The deliverable ``Installable package on CRAN and presentation'' of Section \ref{sec:Technical} defines achievement of the minimal viable product (Solution 1).
+
+\hypertarget{measuring-success}{%
+\subsection{Measuring success}\label{measuring-success}}
+
+The actual success during the development phase is measured by the number of contributions and the number of laboratories that we can engage with. The success of the developed package is measured by use-cases through download statistics, and for development purposes, by tracking how many packages will integrate this package.
+
+\hypertarget{future-work}{%
+\subsection{Future work}\label{future-work}}
+
+Future work in the sense of technical innovation likely entails application to different file types, such as binary files. In addition, we intend to develop Python package with the same scope. Further progress revolves around integration of the package with the services offered by FAIReLABS. It will enable consulting and implementing better resources for data management in analytical laboratories as well as help teaching efforts focussing on data management and reproducible science. In addition, we will potentially consider writing a paper concerning the package for the \href{https://joss.theoj.org/}{Journal of Open Source Software}. And, continuously advertise usage of the package by active engaging with target user-base at conferences and on social media.
+
+\hypertarget{key-risks}{%
+\subsection{Key risks}\label{key-risks}}
+
+One of the key risks in the process of developing the package is the selection of the appropriate solution (as listed in Section \ref{sec:Detail}). Hence the early identification of this bottleneck and the formulation of two contingency plans will help alleviate these risks to some extend. Problems and delays in terms of coordinating community feedback (especially desired use-cases) and contributions (mainly solutions as listed above) could stem from a lack of consensus on the specific solution to be adopted. Hence we aim to address this at the earliest stages of the project (Months 1--2). In terms of tools and technology, we foresee the largest problem in access to enough analytical data. Hence we ensured that we have already a minimal set of data available for testing purposes. All the before mentioned risks could increase the time required to develop the product. However, by defining a set of minimal deliverables, we can at least sketch an accurate image of the current state of data management practices in analytical laboratory facilities and develop a road-map on how to improve these infrastructures. It is also foreseen that solution 1 yields a minimal viable product.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-rirods}{}%
+Chytracek, Radovan, Bernhard Sonderegger, Richard Cote, and Terrell Russell. 2015. ``The Rirods Package Enables Access to File Objects in the iRODS Data Broker System from R.'' \url{https://github.com/irods/irods_client_library_r_cpp/blob/master/DESCRIPTION}.
+
+\leavevmode\hypertarget{ref-xrftools}{}%
+Dunnington, Dewey. 2021. \emph{Xrftools: XRF Tools for R}. \url{https://github.com/paleolimbot/xrftools}.
+
+\leavevmode\hypertarget{ref-cpp11}{}%
+Hester, Jim. 2021. \emph{Cpp11: A C++11 Interface for R's c Interface}. \url{https://CRAN.R-project.org/package=cpp11}.
+
+\leavevmode\hypertarget{ref-vroom}{}%
+Hester, Jim, and Hadley Wickham. 2021. \emph{Vroom: Read and Write Rectangular Text Data Quickly}. \url{https://CRAN.R-project.org/package=vroom}.
+
+\leavevmode\hypertarget{ref-Jurafsky2021}{}%
+Jurafsky, Daniel, and James H. Martin. 2021. \emph{Speech and Language Processing: An introduction to natural language processing, Computational Linguistics, and Speech Recognition}. \href{http://www.cs.colorado.edu/\%7B~\%7Dmartin/slp.html}{http://www.cs.colorado.edu/\{\textasciitilde{}\}martin/slp.html}.
+
+\leavevmode\hypertarget{ref-isoreader}{}%
+Kopf, Sebastian, Brett Davidheiser-Kroll, and Ilja Kocken. 2021. \emph{Isoreader: Read Stable Isotope Data Files}. \url{https://github.com/isoverse/isoreader}.
+
+\leavevmode\hypertarget{ref-tibble}{}%
+Müller, Kirill, and Hadley Wickham. 2021. \emph{Tibble: Simple Data Frames}. \url{https://CRAN.R-project.org/package=tibble}.
+
+\leavevmode\hypertarget{ref-Rajasekar2010}{}%
+Rajasekar, Arcot, Reagan Moore, Chien-Yi Hou, Christopher A. Lee, Richard Marciano, Antoine de Torcy, Michael Wan, et al. 2010. ``iRODS Primer: Integrated Rule-Oriented Data System.'' \emph{Synthesis Lectures on Information Concepts, Retrieval, and Services} 2 (1): 1--143. \url{https://doi.org/10.2200/s00233ed1v01y200912icr012}.
+
+\leavevmode\hypertarget{ref-Rajasekar2015}{}%
+Rajasekar, Arcot, Terrell Russell, Jason Coposky, Antoine de Torcy, Hao Xu, Michael Wan, Reagan W. Moore, et al. 2015. \emph{The integrated Rule-Oriented Data System (iRODS 3.0) Micro-service Workbook}.
+
+\leavevmode\hypertarget{ref-point}{}%
+Schobben, Martin. 2021. \emph{Point: Reading, Processing, and Analysing Raw Ion Count Data}. \url{https://martinschobben.github.io/point/}.
+
+\leavevmode\hypertarget{ref-pkgdown}{}%
+Wickham, Hadley, and Jay Hesselberth. 2020. \emph{Pkgdown: Make Static Html Documentation for a Package}. \url{https://CRAN.R-project.org/package=pkgdown}.
+
+\leavevmode\hypertarget{ref-readr}{}%
+Wickham, Hadley, and Jim Hester. 2021. \emph{Readr: Read Rectangular Text Data}. \url{https://CRAN.R-project.org/package=readr}.
+
+\leavevmode\hypertarget{ref-devtools}{}%
+Wickham, Hadley, Jim Hester, and Winston Chang. 2021. \emph{Devtools: Tools to Make Developing R Packages Easier}. \url{https://CRAN.R-project.org/package=devtools}.
+
+\leavevmode\hypertarget{ref-Wilkinson2016}{}%
+Wilkinson, Mark D, Michel Dumontier, IJsbrand Jan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, et al. 2016. ``Comment: The FAIR Guiding Principles for scientific data management and stewardship.'' \emph{Scientific Data} 3: 1--9. \url{https://doi.org/10.1038/sdata.2016.18}.
+
+\end{document}
