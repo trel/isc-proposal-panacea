@@ -14,6 +14,7 @@ The project lead (MS) is an Earth scientist with 10 years of experience in acade
 
 JR, also a geoscientist, has expertise in data management (being the main maintainer and developer of Neptune; one of the largest paleontology database), data analysis (primarily in R and python), machine learning (see e. g. [a CNN-based radiolarian classifier](https://github.com/plannapus/RadiolarianClassifier)) and scientific software development (see e. g. [NSB_ADP_wx](http://github.com/plannapus/NSB_ADP_wx) or [Raritas](http://github.com/plannapus/Raritas); two pieces of software designed in particular for increasing data reproducibility and reusability in paleontology and stratigraphy). JR was also the organizer of a programming club at the MfN ([Mfn Code Clinic](http://github.com/plannapus/MfN-Code-Clinic)) from 2015 to 2018.
 
+TR oversees the iRODS development team and handles code review, package management, documentation, and high level architecture design. He's interested in distributed systems, metadata, security, and open source software that accelerates science. TR holds a Ph.D. in Information Science from the University of North Carolina at Chapel Hill and has been working on iRODS since 2008. In his current role, he also provides management and oversight of the iRODS Consortium.
 
 <!--
 Who needs to be involved, what's the proposed structure, what will it take to get their involvement?
